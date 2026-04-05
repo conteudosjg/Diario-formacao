@@ -1,0 +1,405 @@
+<!-- Copyright (c) 2026 João Silva -->
+<!-- Licensed under CC BY-NC-SA 4.0. See LICENSE-ASSETS in repository root. -->
+<!--Licensed under the MIT License. See LICENSE-CODE in repository root.
+<! -- Nota o autor não pretende crédito; trabalho meramente recreativo. -->
+<!-- Esta declaração não anula requisitos de atribuição de terceiros. -->
+
+
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  
+
+  <title>Diário da Formação</title>
+
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css"> 
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+
+  <!--- <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/black.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css">
+
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/notes/notes.js"></script> -->
+  
+  <style>
+    /* MENU LATERAL */
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 9999;
+  color: white;
+  font-size: 1rem;
+}
+
+body, .reveal {
+  font-family: Arial, sans-serif !important;
+}
+
+#side-menu h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+#side-menu a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+#side-menu a:hover {
+  color: #00d4ff;
+}
+
+#side-menu .submenu-title:hover {
+  color: #00d4ff;
+}
+
+/* Submenu */
+.submenu-title {
+  cursor: pointer;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.submenu-content {
+  display: none;
+  margin-left: 10px;
+}
+
+.submenu-content a {
+  padding-left: 10px;
+  font-size: 0.95rem;
+}
+
+/* Ajustar slides para não ficarem atrás do menu */
+.reveal {
+  margin-left: 300px;
+}
+
+/* Botões de navegação personalizados (inicialmente escondidos) */
+#nav-buttons {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: none; /* começa escondido */
+  flex-direction: column;
+  gap: 9px;
+  z-index: 8000;
+}
+
+/* ================================
+   LAYOUT COERENTE PARA TODO O DIÁRIO
+   ================================ */
+/* Alinhar texto */
+/*.texto-scroll {
+  font-size: 20pt;
+  text-align: center;
+ /* max-height: 1000px;    controla a altura visível */
+  /* overflow-y: auto;    ativa scroll vertical */
+ /* padding: 20px; opcional  
+} */
+
+.reveal section {
+  /*max-height: 1500px;*/
+  overflow-y: auto;
+}
+
+/* Alinhar títulos */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-size: 35pt;
+  text-align: center !important;
+  /*margin-left: -10px;*/
+  max-width: 700px;
+ /* margin-left: -170px !important;  ajusta a posição horizontal */
+}
+
+/* Alinhar parágrafos */
+.reveal p {
+  text-align: justify !important;
+  font-size: 20pt;
+  margin-left: -10px !important;
+  max-width: 700px; /* evita linhas demasiado longas */
+  padding-left: 10px;
+}
+
+/* Alinhar listas */
+.reveal ul,
+.reveal ol {
+  text-align: left !important;
+  margin-left: -10px !important;
+  max-width: 900px;
+}
+
+/* Alinhar blocos de código */
+.reveal pre {
+  text-align: left !important;
+  margin-left: -40px !important;
+  width: 900px;
+}
+
+/* Alinhar imagens */
+.reveal section img {
+  display: block;
+  margin-left: -40px !important;
+  margin-top: 20px;
+  max-width: 80%;
+  border-radius: 8px;
+}
+
+/* Ajustar colunas (caso uses) */
+.two-columns {
+  margin-left: -40px !important;
+  gap: 40px;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- MENU LATERAL -->
+<div id="side-menu">
+  <h3>Páginas do Diário</h3>
+
+  <a href="#/0">Capa</a>
+  <a href="#/1">Introdução</a>
+  <div class="submenu-title" onclick="openDailySection()">Registos Diários ▸</div>
+
+  <!-- Submenu Registos Diários -->
+  <div class="submenu">
+       
+    <div id="submenu-days" class="submenu-content">
+      <a href="#/3">Dia 1</a>
+      <a href="#/4">Dia 2</a>
+      <a href="#/5">Dia 3</a>
+      <a href="#/6">Dia 4</a>
+      <a href="#/7">Dia 5</a>
+      <a href="#/8">Dia 6</a>
+      <a href="#/9">Dia 7</a>
+      <a href="#/10">Dia 8</a>
+      <a href="#/11">Dia 9</a>
+      <a href="#/12">Dia 10</a>
+      <a href="#/13">Dia 11</a>
+      <a href="#/14">Dia 12</a>
+    </div>
+  </div>
+
+  <a href="#/15">Trabalho Final</a>
+  <a href="#/16">Reflexão Final</a>
+ 
+
+</div>
+
+<div class="reveal" >
+  <div class="slides">
+
+    <!-- CAPA -->
+    <section>
+      <h1>Diário da Formação</h1>
+      <h3>Criação de Ambientes de Aprendizagem Inclusivos e Inovadores</h3>
+      <p><small>por João Garcia</small></p>
+    </section>
+
+<!-- Introdução -->
+    <section>
+      <section><h2>Criar Ambientes Inclusivos</h2><p>Este é um diário acerca da atividade desenvolvida durante a formação de Criação de Ambientes de Aprendizagem Inclusivos e Inovadores.</section>
+    </section>
+
+<!-- Registos Diários -->
+<section>
+  <h2>Registos Diários</h2>
+  <p>
+    Nesta secção encontram-se os registos diários da formação, com resumos, evidências e reflexões de cada sessão.
+  </p>
+</section>
+
+
+    <!-- DIA 1 -->
+    <section>
+      <section><h2>12 de janeiro — Apresentação</h2><p>Hoje começámos por nos apresentar — formandos e formadora — num daqueles momentos simples que ajudam a criar terreno comum. Depois, fomos desfiando a estrutura da ação: os objetivos que nos orientam, os conteúdos que vamos explorar, a metodologia que dará ritmo ao trabalho e a forma como tudo será avaliado.
+        Seguiu‑se uma primeira aproximação à plataforma Moodle do CFAE, onde iremos concentrar materiais, tarefas e comunicações. Aos poucos, fomos ganhando familiaridade com o espaço digital que nos vai acompanhar.
+        Dedicámos também um bom tempo a revisitar as orientações políticas para a Educação Inclusiva, consolidando ideias e alinhando conceitos.
+        A partir daí, mergulhámos nos documentos legislativos e de apoio à prática — o DL 54, o DL 55 e o PASEO — procurando perceber como se articulam e que implicações têm no quotidiano letivo.
+        Terminámos com a realização das atividades previstas para a sessão, já com a sensação de que começamos a construir um caminho comum.</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 2 -->
+    <section>
+      <section><h2>Dia 2 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 3 -->
+    <section>
+      <section><h2>Dia 3 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 4 -->
+    <section>
+      <section><h2>Dia 4 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 5 -->
+    <section>
+      <section><h2>Dia 5 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 6 -->
+    <section>
+      <section><h2>Dia 6 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 7 -->
+    <section>
+      <section><h2>Dia 7 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 8 -->
+    <section>
+      <section><h2>Dia 8 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 9 -->
+    <section>
+      <section><h2>Dia 9 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 10 -->
+    <section>
+      <section><h2>Dia 10 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 11 -->
+    <section>
+      <section><h2>Dia 11 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- DIA 12 -->
+    <section>
+      <section><h2>Dia 12 — Título</h2><p>Resumo do dia</p></section>
+      <section><h3>Evidências</h3><p>Imagens, notas, exemplos…</p></section>
+      <section><h3>O que esperar a seguir</h3><p>Expetativas</p></section>
+    </section>
+
+    <!-- Trabalho Final -->
+    <section>
+      <section><h2>Trabalho Final — Título</h2><p>Aqui aparecerá o trabalho final</p></section>
+    </section>
+
+    <!-- Reflexão Final -->
+    <section>
+      <section><h2>Reflexões Finais — Título</h2><p>Aqui as reflexões</p></section>
+    </section>
+  </div>
+</div>
+
+<script src="node_modules/reveal.js/dist/reveal.js"></script>
+<script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+
+<script>
+   Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    plugins: [ RevealHighlight, RevealNotes ]
+  })
+
+    function toggleSubmenu() {
+    const submenu = document.getElementById("submenu-days");
+    const navButtons = document.getElementById("nav-buttons");
+
+    const isHidden = submenu.style.display === "" || submenu.style.display === "none";
+
+    if (isHidden) {
+      submenu.style.display = "block";   // abre submenu
+      navButtons.style.display = "flex"; // mostra botões
+    } else {
+      submenu.style.display = "none";    // fecha submenu
+      navButtons.style.display = "none"; // esconde botões
+    }
+  }
+
+
+function openDailySection() {
+  // Ir para o slide da descrição (Registos Diários)
+  Reveal.slide(2);
+
+  // Abrir/fechar submenu
+  const submenu = document.getElementById("submenu-days");
+  const navButtons = document.getElementById("nav-buttons");
+
+  const isHidden = submenu.style.display === "" || submenu.style.display === "none";
+
+  if (isHidden) {
+    submenu.style.display = "block";
+    navButtons.style.display = "flex";
+  } else {
+    submenu.style.display = "none";
+    navButtons.style.display = "none";
+  }
+}
+
+  Reveal.on('slidechanged', event => {
+    const navButtons = document.getElementById("nav-buttons");
+    const submenu = document.getElementById("submenu-days");
+
+    const indexh = event.indexh; // slide horizontal atual
+
+    const isDailySlide = indexh >= 3 && indexh <= 14; // Dias 1–12
+
+    if (isDailySlide && submenu.style.display === "block") {
+      navButtons.style.display = "flex";
+    } else {
+      navButtons.style.display = "none";
+    }
+  })
+
+</script>
+
+<!-- BOTÕES DE NAVEGAÇÃO -->
+
+<div id="nav-buttons">
+  <button onclick="Reveal.navigateUp()">▲</button>
+  <button onclick="Reveal.navigateDown()">▼</button>
+</div>
+
+</body>
+</html>
+
